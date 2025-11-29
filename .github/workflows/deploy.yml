@@ -1,9 +1,4 @@
 name: Deploy
-
-defaults:
-  run:
-    shell: bash
-    working-directory: ./frontend
 on:
   push:
     branches:
@@ -13,7 +8,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -38,6 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
