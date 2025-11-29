@@ -1,5 +1,9 @@
 name: Deploy
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./frontend
 on:
   push:
     branches:
@@ -13,10 +17,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Run a command in a specific directory
-        run: echo "This command runs in a different directory"
-        working-directory: ./frontend
-
       - name: Setup Node
         uses: actions/setup-node@v4
 
